@@ -15,9 +15,10 @@ class YahooFinanceScraperTest {
     @Test
     void 스크래핑_성공() throws IOException {
         // given
+        YahooFinanceScraper yahooFinanceScraper = new YahooFinanceScraper();
 
         // when
-        ScrapedResult scrap = YahooFinanceScraper.scrap(new Company("COKE", "코카콜라"));
+        ScrapedResult scrap = yahooFinanceScraper.scrap(new Company("COKE", "코카콜라"));
 
         // then
         assertThat(scrap).isNotNull();
@@ -27,9 +28,10 @@ class YahooFinanceScraperTest {
     @Test
     void scrapCompanyByTicker_성공() throws IOException {
         // given
+        YahooFinanceScraper yahooFinanceScraper = new YahooFinanceScraper();
 
         // when
-        Company result = YahooFinanceScraper.scrapCompanyByTicker("MMM");
+        Company result = yahooFinanceScraper.scrapCompanyByTicker("MMM");
 
         // then
         assertThat(result).isNotNull();
