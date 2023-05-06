@@ -4,17 +4,22 @@ import com.example.mydividend.model.Company;
 import com.example.mydividend.model.Dividend;
 import com.example.mydividend.model.ScrapedResult;
 import com.example.mydividend.model.constants.Month;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
+@Slf4j
 public class YahooFinanceScraper implements Scrapper {
 
     private static final String BASE_URL = "https://finance.yahoo.com/quote/%s/history?period1=%d&period2=%d&interval=1mo";
@@ -65,7 +70,10 @@ public class YahooFinanceScraper implements Scrapper {
 
         try {
             Document document = Jsoup.connect(url).get();
+            //log.info(document.toString());
             Element titleEle = document.getElementsByTag("h1").get(0);
+            log.info(titleEle.toString());
+
             String title = titleEle.text().split("\\(")[0].replace(")", "").trim();
 
             return Company.builder()

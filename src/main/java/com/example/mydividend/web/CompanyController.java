@@ -1,26 +1,43 @@
 package com.example.mydividend.web;
 
+import com.example.mydividend.model.Company;
+import com.example.mydividend.service.CompanyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
+@RequestMapping("/company")
+@RequiredArgsConstructor
 public class CompanyController {
-    @GetMapping("/company/autocomplete")
+
+    private final CompanyService companyService;
+
+    @GetMapping("/autocomplete")
     public ResponseEntity<?> autocomplete(@RequestParam String keyword) {
         return null;
     }
 
-    @GetMapping("/company")
+    @GetMapping
     public ResponseEntity<?> searchCompany() {
         return null;
     }
 
-    @PostMapping("/company")
-    public ResponseEntity<?> addCompany() {
-        return null;
+    @PostMapping
+    public ResponseEntity<?> addCompany(@RequestBody Company request) throws IOException {
+        String ticker = request.getTicker().trim();
+        if (ObjectUtils.isEmpty(ticker)) {
+            throw new IllegalArgumentException("ticker is empty");
+        }
+        Company company = companyService.save(ticker);
+
+        return ResponseEntity.ok(company);
     }
 
-    @DeleteMapping("/company")
+    @DeleteMapping
     public ResponseEntity<?> deleteCompany() {
         return null;
     }
