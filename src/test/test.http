@@ -63,5 +63,9 @@ Content-Type: application/json
 }
 
 ### GET Company
-GET localhost:8080/company?size=5&page=1
+GET localhost:8080/company?size=5
+Accept: application/json
+
+### GET 배당금조회
+GET localhost:8080/finance/dividend/Realty Income Corporation
 Accept: application/json
