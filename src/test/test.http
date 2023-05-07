@@ -1,7 +1,11 @@
-### Send POST request with json body
+### Send POST Company
 POST localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "O"
+  "ticker": "MMM"
 }
+
+### GET Company
+GET localhost:8080/company
+Accept: application/json

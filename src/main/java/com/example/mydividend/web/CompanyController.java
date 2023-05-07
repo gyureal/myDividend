@@ -23,7 +23,7 @@ public class CompanyController {
 
     @GetMapping
     public ResponseEntity<?> searchCompany() {
-        return null;
+        return ResponseEntity.ok(companyService.getAllCompany());
     }
 
     @PostMapping
