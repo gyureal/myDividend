@@ -9,6 +9,9 @@ import com.example.mydividend.persist.entity.DividendEntity;
 import com.example.mydividend.scrapper.Scrapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -47,9 +50,11 @@ public class CompanyService {
         return company;
     }
 
-    public List<Company> getAllCompany() {
-        return companyRepository.findAll().stream()
+    public Page<Company> getAllCompany(Pageable pageable) {
+        // list -> page 변경 : new PageImpl<>(list);
+        return new PageImpl<>(companyRepository.findAll(pageable)
+                .stream()
                 .map(Company::from)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

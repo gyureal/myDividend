@@ -6,6 +6,62 @@ Content-Type: application/json
   "ticker": "MMM"
 }
 
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "O"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "NKE"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "COKE"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "AAPL"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "QQQ"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "SPY"
+}
+
+### Send POST Company
+POST localhost:8080/company
+Content-Type: application/json
+
+{
+  "ticker": "DIA"
+}
+
 ### GET Company
-GET localhost:8080/company
+GET localhost:8080/company?size=5&page=1
 Accept: application/json

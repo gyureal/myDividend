@@ -3,6 +3,7 @@ package com.example.mydividend.web;
 import com.example.mydividend.model.Company;
 import com.example.mydividend.service.CompanyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<?> searchCompany() {
-        return ResponseEntity.ok(companyService.getAllCompany());
+    public ResponseEntity<?> searchCompany(final Pageable pageable) {
+        return ResponseEntity.ok(companyService.getAllCompany(pageable));
     }
 
     @PostMapping
