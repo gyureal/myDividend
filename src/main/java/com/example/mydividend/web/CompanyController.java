@@ -20,7 +20,8 @@ public class CompanyController {
 
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autocomplete(@RequestParam String keyword) {
-        return ResponseEntity.ok(autocompletion.autocomplete(keyword));
+       // return ResponseEntity.ok(autocompletion.autocomplete(keyword));
+        return ResponseEntity.ok(companyService.getCompanyNamesByKeyword(keyword));
     }
 
     @GetMapping
@@ -35,7 +36,7 @@ public class CompanyController {
             throw new IllegalArgumentException("ticker is empty");
         }
         Company company = companyService.save(ticker);
-        autocompletion.addKeyword(company.getName());
+        //autocompletion.addKeyword(company.getName());
         return ResponseEntity.ok(company);
     }
 

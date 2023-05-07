@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +58,13 @@ public class CompanyService {
                 .stream()
                 .map(Company::from)
                 .collect(Collectors.toList()));
+    }
+
+    public List<String> getCompanyNamesByKeyword(String keyword) {
+        Pageable pageable = PageRequest.of(0, 10);
+        return companyRepository.findByNameStartingWithIgnoreCase(keyword, pageable)
+                .stream()
+                .map(CompanyEntity::getName)
+                .collect(Collectors.toList());
     }
 }
