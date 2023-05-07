@@ -1,5 +1,6 @@
 package com.example.mydividend.service;
 
+import com.example.mydividend.model.Autocompletion;
 import com.example.mydividend.model.Company;
 import com.example.mydividend.model.ScrapedResult;
 import com.example.mydividend.persist.CompanyRepository;

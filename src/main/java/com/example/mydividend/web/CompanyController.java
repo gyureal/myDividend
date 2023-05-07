@@ -1,5 +1,6 @@
 package com.example.mydividend.web;
 
+import com.example.mydividend.model.Autocompletion;
 import com.example.mydividend.model.Company;
 import com.example.mydividend.service.CompanyService;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,12 @@ import java.io.IOException;
 @RequestMapping("/company")
 @RequiredArgsConstructor
 public class CompanyController {
-
+    private final Autocompletion autocompletion = new Autocompletion();
     private final CompanyService companyService;
 
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autocomplete(@RequestParam String keyword) {
-        return null;
+        return ResponseEntity.ok(autocompletion.autocomplete(keyword));
     }
 
     @GetMapping
@@ -34,7 +35,7 @@ public class CompanyController {
             throw new IllegalArgumentException("ticker is empty");
         }
         Company company = companyService.save(ticker);
-
+        autocompletion.addKeyword(company.getName());
         return ResponseEntity.ok(company);
     }
 

@@ -51,7 +51,7 @@ POST localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "SPY"
+  "ticker": "IBM"
 }
 
 ### Send POST Company
@@ -59,7 +59,7 @@ POST localhost:8080/company
 Content-Type: application/json
 
 {
-  "ticker": "DIA"
+  "ticker": "INTC"
 }
 
 ### GET Company
@@ -68,4 +68,8 @@ Accept: application/json
 
 ### GET 배당금조회
 GET localhost:8080/finance/dividend/Realty Income Corporation
+Accept: application/json
+
+### GET 자동완성
+GET localhost:8080/company/autocomplete?keyword=Int
 Accept: application/json
